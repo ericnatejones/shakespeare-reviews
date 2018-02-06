@@ -5,6 +5,10 @@ const instance = axios.create({
   headers: {'Authorization': 'koOheljmQX'}
 });
 
-export default function(){
+export function getReviews(){
   return instance.get()
+}
+
+export function getSingleReview(id){
+  return instance.get("/"+id)
 }
