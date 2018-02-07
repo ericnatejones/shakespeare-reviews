@@ -1,26 +1,25 @@
 import React, {Component} from "react"
 import Review from "./Review"
-import { getReviews, getSingleReview } from "./getReviews"
-
-const styles = {
-  info: {
-    position: "absolute",
-    right: 0,
-    top: 0
-  }
-}
+import Detail from "./Detail"
+import Inputs from "./Inputs"
+import { getReviews, getSingleReview, filters, sortBy } from "./helperFunctions"
 
 export default class Reviews extends Component {
   constructor(){
     super()
     this.state = {
+      sortByTerm: "author",
       reviews: [],
+      min: 0,
+      max: 5,
+      searchTerm: "",
       info: {
 
       }
     }
 
     this.toggleInfo = this.toggleInfo.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount(){
@@ -39,20 +38,26 @@ export default class Reviews extends Component {
     })
   }
 
+  handleChange(e){
+    this.setState({[e.target.name]: e.target.value})
+  }
+
   render(){
-    const reviews = this.state.reviews.map(review=>{
+    const { reviews, min, max, searchTerm, sortByTerm } = this.state
+    const filteredReviews = filters(reviews, min, max, searchTerm)
+
+    const sortedReviews = sortBy(filteredReviews, sortByTerm).map(review=>{
       return <Review handleClick={this.toggleInfo} review={review} key={review.id} />
     })
 
     return (
       <div>
-        <div>
-          {reviews}
-        </div>
-        <div style={styles.info}>
-          <div>{this.state.info.author}</div>
-          <div>{this.state.info.body}</div>
-        </div>
+        <Inputs
+          searchTerm={this.state.searchTerm}
+          handleChange={this.handleChange}
+        />
+        {sortedReviews}
+        <Detail info={this.state.info} />
       </div>
     )
   }
