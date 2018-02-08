@@ -20,13 +20,13 @@ export function sortBy(arr, sortType){
     return arr.sort((a, b) => a.rating - b.rating)
   } else if(sortType === "rating: highest to lowest") {
     return arr.sort((a, b) => b.rating - a.rating)
-  } 
+  }
 }
 
 export function filters(arr, min, max, searchTerm){
   return arr.filter(item => {
     return item.rating >= min &&
            item.rating <= max &&
-           item.author.toLowerCase().indexOf(searchTerm.toLowerCase()) === 0
+           item.author.toLowerCase().includes(searchTerm.toLowerCase())
   })
 }
