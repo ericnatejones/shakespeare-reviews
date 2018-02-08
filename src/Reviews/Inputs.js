@@ -39,7 +39,7 @@ export default function Inputs(props){
           Sort by:
         </Col>
         <Col sm={5} md={12}>
-          <select style={styles.dropDown} name="sortByTerm" onChange={props.handleChange}>
+          <select value={props.sortByTerm} style={styles.dropDown} name="sortByTerm" onChange={props.handleChange}>
             <option value="author">author: alphabetically</option>
             <option value="rating: lowest to highest">rating: lowest to highest</option>
             <option value="rating: highest to lowest">rating: highest to lowest</option>

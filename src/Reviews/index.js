@@ -77,6 +77,7 @@ export default class Reviews extends Component {
         <Inputs
           searchTerm={this.state.searchTerm}
           handleChange={this.handleChange}
+          sortByTerm={this.state.sortByTerm}
         />
         <ListGroup>
           {sortedReviews}
