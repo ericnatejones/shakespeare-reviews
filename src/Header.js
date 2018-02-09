@@ -7,7 +7,7 @@ const styles = {
   zIndex: 2,
   width: "100%",
   backgroundColor: "white",
-  border: "1px solid #ddd",
+  borderBottom: "1px solid #ddd",
   right: 0,
   textAlign: "center",
   verticalAlign: "center"

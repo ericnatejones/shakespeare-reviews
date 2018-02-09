@@ -1,6 +1,6 @@
 import React from "react"
 import {Modal, Button} from "react-bootstrap"
-
+import PropTypes from "prop-types"
 export default function Info(props){
   return (
     <Modal
@@ -18,4 +18,13 @@ export default function Info(props){
       </Modal.Footer>
     </Modal>
   )
+}
+
+Info.propTypes = {
+  info: PropTypes.shape({
+    author: PropTypes.boby,
+    rating: PropTypes.author
+  }),
+  handleChange: PropTypes.func,
+  sortByTerm: PropTypes.string
 }

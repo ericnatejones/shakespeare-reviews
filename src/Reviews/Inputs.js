@@ -1,5 +1,6 @@
 import React from "react"
-import {MenuItem, FormGroup, ControlLabel, FormControl, Col, Form, DropdownButton} from "react-bootstrap"
+import { FormGroup, FormControl, Col, Form } from "react-bootstrap"
+import PropTypes from "prop-types"
 
 const styles = {
   form: {
@@ -29,7 +30,7 @@ export default function Inputs(props){
             type="text"
             value={props.searchTerm}
             name="searchTerm"
-            placeholder="Enter text"
+            placeholder="Enter name"
             onChange={props.handleChange}
           />
         </Col>
@@ -49,4 +50,10 @@ export default function Inputs(props){
       </FormGroup>
     </Form>
   )
+}
+
+Inputs.propTypes = {
+  searchTerm: PropTypes.string,
+  handleChange: PropTypes.func,
+  sortByTerm: PropTypes.string
 }

@@ -1,5 +1,6 @@
 import React from "react"
 import { ListGroupItem } from "react-bootstrap"
+import PropTypes from "prop-types"
 
 export default function Review(props){
   const styles = {
@@ -16,4 +17,13 @@ export default function Review(props){
       <p>{props.review.rating}</p>
     </ListGroupItem>
   )
+}
+
+Review.propTypes = {
+  review: PropTypes.shape({
+    author: PropTypes.string,
+    rating: PropTypes.number
+  }),
+  selected: PropTypes.bool,
+  handleClick: PropTypes.func
 }
