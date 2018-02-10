@@ -16,6 +16,7 @@ export default class Reviews extends Component {
       searchTerm: "",
       selected: "",
       showModal: false,
+      ratingView: "stars",
       info: {
 
       }
@@ -69,6 +70,7 @@ export default class Reviews extends Component {
         review={review}
         key={review.id}
         selected={this.state.selected === review.id}
+        ratingView={this.state.ratingView}
         />
     })
 
@@ -78,6 +80,7 @@ export default class Reviews extends Component {
           searchTerm={this.state.searchTerm}
           handleChange={this.handleChange}
           sortByTerm={this.state.sortByTerm}
+          ratingView={this.state.ratingView}
         />
         <ListGroup>
           {sortedReviews}

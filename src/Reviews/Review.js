@@ -1,6 +1,8 @@
 import React from "react"
 import { ListGroupItem } from "react-bootstrap"
 import PropTypes from "prop-types"
+import StarRatings from 'react-star-ratings'
+
 
 export default function Review(props){
   const styles = {
@@ -14,7 +16,20 @@ export default function Review(props){
       className="review"
     >
       <h4>{props.review.author}</h4>
-      <p>{props.review.rating}</p>
+
+      {
+        props.ratingView === "stars"
+        ?
+        <StarRatings
+          rating={props.review.rating}
+          numberOfStars={5}
+          starDimension={"19px"}
+          starSpacing={"7px"}
+          starRatedColor={"#ffd700"}
+        />
+        :
+        <p>{props.review.rating}</p>
+      }
     </ListGroupItem>
   )
 }

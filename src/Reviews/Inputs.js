@@ -1,5 +1,5 @@
 import React from "react"
-import { FormGroup, FormControl, Col, Form } from "react-bootstrap"
+import { FormGroup, FormControl, Col, Form, Radio } from "react-bootstrap"
 import PropTypes from "prop-types"
 
 const styles = {
@@ -36,15 +36,34 @@ export default function Inputs(props){
         </Col>
       </FormGroup>
       <FormGroup>
-        <Col style={styles.label} sm={5} md={12} lg={5}>
-          Sort by:
-        </Col>
-        <Col sm={5} md={12}>
+        <Col style={styles.label} sm={6}>
+          <p>Sort by:</p>
           <select value={props.sortByTerm} style={styles.dropDown} name="sortByTerm" onChange={props.handleChange}>
             <option value="author">author: alphabetically</option>
             <option value="rating: lowest to highest">rating: lowest to highest</option>
             <option value="rating: highest to lowest">rating: highest to lowest</option>
           </select>
+        </Col>
+        <Col style={styles.label} sm={6}>
+          <p>View rating as:</p>
+          <Radio
+            checked={props.ratingView === "stars"}
+            name="ratingView"
+            value="stars"
+            onChange={props.handleChange}
+            inline
+          >
+            stars
+          </Radio>{' '}
+          <Radio
+            checked={props.ratingView === "numbers"}
+            name="ratingView"
+            value="numbers"
+            onChange={props.handleChange}
+            inline
+          >
+            numbers
+          </Radio>
         </Col>
 
       </FormGroup>
@@ -53,6 +72,7 @@ export default function Inputs(props){
 }
 
 Inputs.propTypes = {
+  ratingView: PropTypes.string,
   searchTerm: PropTypes.string,
   handleChange: PropTypes.func,
   sortByTerm: PropTypes.string
