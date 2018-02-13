@@ -23,7 +23,7 @@ export default function Review(props){
         <StarRatings
           rating={props.review.rating}
           numberOfStars={5}
-          starDimension={"19px"}
+          starDimension={"25px"}
           starSpacing={"7px"}
           starRatedColor={"#ffd700"}
         />
